@@ -1,0 +1,13 @@
+http://www.das.ufsc.br/~cancian/pessoal/arquivos/se_sistemas_embarcados.pdf (Fala sobre sistemas embarcados)
+
+
+
+Fala sobrwe tipos de testes e tals
+http://www.artigonal.com/programacao-artigos/processo-de-teste-de-software-505672.html
+
+http://www.artigonal.com/programacao-artigos/automacao-de-testes-4665417.html
+
+http://www.artigonal.com/tecnologias-artigos/solucao-qaweb-para-teste-de-software-505665.html
+
+
+http://www.linhadecodigo.com.br/artigo/2775/Introdu%C3%A7%C3%A3o-ao-Teste-de-Software.aspx

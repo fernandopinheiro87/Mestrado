@@ -1,0 +1,43 @@
+Introducao Justificativa:
+
+Com o aumento da velocidade de distribuição e  desenvolvimento de produtos des softwares, 
+acaba sendo de suma importância a qualidade e a eficiência com o resultado do sistema final.
+O rápido desenvolvimento de software com um padrão de qualidade, é hoje um dos maiores desafio 
+para a empresas de 
+
+
+
+________________
+-Falar sobre o sistema embarcado ( sua importancia, crescimento)
+-Importancia do testes de softwaores, nas etapas iniciais de um projeto
+-Citar os modelos que a serem usados para os testes( Uml, dercs )
+- falar do  Objetivo Geral ( implementacao, analise do resultado, testes)
+-FAlar sobre o produto final da implementacao ( resultado esperado )
+-técnicas e tipos de testes que serao usado na implementacao (caixa branca, testa os componentes internos da aplicacao)
+____________________
+
+
+
+
+
+Objetivos:
+Objetivo Geral:
+- Objetivo geral seria a implementacao dos testes funcionalidades a ser aplicada no modelo
+uml
+Objetivo especifico:
+-Implementa o teste de funcionalidade para modelo uml usando técnicas de eng. de soft.
+-Avaliar o resultado do teste de funcionalidade da implementacao
+
+Metodologia:
+
+1) definicao dos casos de testes do sistema a ser testado 
+2) Implementa o algoritmo  para executar os casos de testes
+3)
+
+
+
+
+Obs: 1)Perguntar qual a diferença na implementacao de teste em um 
+sistema normal e embarcado.
+2)Dificuldade Achar material para referencia.
+3)Como sera feita a definicao do casos de testes?
