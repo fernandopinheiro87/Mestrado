@@ -1,0 +1,19 @@
+
+ES
+
+9 - Planeje e crie um documento de design para ilustrar pensamentos, idéias e Sequencial (passo a passo) (por exemplo, mapa de história, storyboard, gráfico sequencial organizador).
+12 - Crie um plano como parte do processo de projeto iterativo, independentemente e com diversas equipes colaborativas (por exemplo, storyboard, fluxograma, pseudo-código, mapa de história).
+
+16 - Use um processo de projeto iterativo (por exemplo, defina o problema, gere idéias, crie, teste, E melhorar soluções) para resolver problemas, tanto de forma independente como colaborativa
+19 - Design, develop, and implement a computing artifact that responds to an event (e.g., robot that responds to a sensor, mobile app that responds to a text message, sprite that responds to a broadcast).
+
+19 - Use técnicas de pesquisa e design centradas no usuário (por exemplo, pesquisas, entrevistas) para criar soluções de software
+
+21 - Demonstrar o papel e a interação de um computador incorporado em um sistema físico, como um sistema eletrônico, biológico ou veículo, criando um diagrama, modelo, simulação ou protótipo.
+
+25 - Demonstrar processos de ciclo de vida do software (por exemplo, espiral, cachoeira) participando de Equipes de projeto de software (por exemplo, projeto de serviço comunitário com clientes do mundo real).
+27 - Avaliar as qualidades-chave de um programa (por exemplo, correção, usabilidade, legibilidade, eficiência, Portabilidade, escalabilidade) através de um processo como uma revisão de código.
+
+EU
+
+23 - Redesenhar interfaces de usuário (por exemplo, páginas da web, aplicativos móveis, animações) para ser mais inclusivo, acessível e minimizando o impacto do viés inerente do designer.
