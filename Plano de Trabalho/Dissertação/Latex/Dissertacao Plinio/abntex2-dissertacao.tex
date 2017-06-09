@@ -1,0 +1,589 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.6 laurocesar
+%% Copyright 2012-2016 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	%openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	openany, %plinio custom	
+	%twoside,			% para impressão em recto e verso. Oposto a oneside
+	oneside, %plinio custom
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+%\usepackage[latin1]{inputenc}
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage[export]{adjustbox}  % bordas em imagens
+\usepackage{pdfpages}			%Plinio usou para incluir os PDF do apendice D
+\usepackage{lscape}
+\usepackage{float}
+%\usepackage{chngcntr}
+
+% ---
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+
+%\counterwithout{figure}{section}
+%\counterwithout{table}{section}
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+\usepackage[table,xcdraw]{xcolor}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+%\titulo{Aplicando Grounded Theory para compreender as dificuldades de Planejamento de TI em Órgãos Federais}
+\title{Uma Investigação sobre as Dificuldades de Planejamento de TI em Instituições Públicas Brasileiras: Uma Abordagem com Teoria Fundamentada em Dados}
+\autor{Plínio Antunes Garcia}
+\local{Recife, PE - Brasil}
+\data{2016}
+\orientador{Vinicius Cardoso Garcia}
+%\coorientador{Equipe \abnTeX}
+\instituicao{%
+  Universidade Federal de Pernambuco - UFPE
+  \par
+  Centro de Informática - CIn
+  \par
+  Programa de Pós-Graduação em Ciência da Computação}
+\tipotrabalho{Dissertação (Mestrado)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Este trabalho foi apresentado à Pós-Graduação em Ciência da
+Computação do Centro de Informática da Universidade Federal de
+Pernambuco como requisito parcial para obtenção do grau de Mestre.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+%\imprimircapa
+\includepdf[pages=-]{pre-textuais/capa.pdf}
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+%\imprimirfolhaderosto*
+%\imprimirfolhaderosto
+\includepdf[pages=-]{pre-textuais/folha_rosto.pdf}
+\includepdf[pages=-]{pre-textuais/ficha_catalografica.pdf}
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+%\begin{fichacatalografica}
+%	\sffamily
+%	\vspace*{\fill}					% Posição vertical
+%	\begin{center}					% Minipage Centralizado
+%	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+%	\small
+%	\imprimirautor
+%	%Sobrenome, Nome do autor
+%	
+%	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+%	\imprimirlocal, \imprimirdata-
+%	
+%	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+%	
+%	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+%	
+%	\hspace{0.5cm}
+%	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+%	\imprimirdata.}\\
+%	
+%	\hspace{0.5cm}
+%		1. Palavra-chave1.
+%		2. Palavra-chave2.
+%		2. Palavra-chave3.
+%		I. Orientador.
+%		II. Universidade xxx.
+%		III. Faculdade de xxx.
+%		IV. Título 			
+%	\end{minipage}}
+%	\end{center}
+%\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir errata
+% ---
+%\begin{errata}
+%Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+
+%\vspace{\onelineskip}
+
+%FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
+%reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
+%rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
+%cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
+%Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+
+%\begin{table}[htb]
+%\center
+%\footnotesize
+%\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+%  \hline
+%   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
+%    \hline
+%    1 & 10 & auto-conclavo & autoconclavo\\
+%   \hline
+%\end{tabular}
+%\end{table}
+
+%\end{errata}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+\includepdf[pages=-]{pre-textuais/folha_aprovacao.pdf}
+%
+%\begin{folhadeaprovacao}
+
+%  \begin{center}
+%    {\ABNTEXchapterfont\large\imprimirautor}
+
+%    \vspace*{\fill}\vspace*{\fill}
+%    \begin{center}
+%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+%    \end{center}
+%    \vspace*{\fill}
+    
+%    \hspace{.45\textwidth}
+%    \begin{minipage}{.5\textwidth}
+%        \imprimirpreambulo
+%    \end{minipage}%
+%    \vspace*{\fill}
+%   \end{center}
+        
+%   Trabalho aprovado. \imprimirlocal, 24 de novembro de 2012:
+
+%   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+%   \assinatura{\textbf{Professor} \\ Convidado 1}
+%   \assinatura{\textbf{Professor} \\ Convidado 2}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+%   \begin{center}
+%    \vspace*{0.5cm}
+%    {\large\imprimirlocal}
+%    \par
+%    {\large\imprimirdata}
+%    \vspace*{1cm}
+%  \end{center}
+  
+%\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+
+\includepdf[pages=-]{pre-textuais/dedicatoria.pdf}
+
+%\begin{dedicatoria}
+%    \vspace*{\fill}
+%    \hspace{\stretch{2}}
+%   \begin{flushright}
+%   \noindent
+%   \textit{Dedico este trabalho à minha esposa, Flávia, por ter me fornecido a base emocional necessária para que
+%   este mestrado fosse conquistado da melhor forma.}
+%   \end{flushright}
+%   \vspace*{\fill}
+%\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Agradeço à minha família, principalmente aos meus pais, Sônia e Antonio, por ter me ensinado que a educação é um patrimônio
+para toda a vida e por ter me dado o suporte necessário para seguir neste caminho.
+
+Ao meu amor, Flávia, por estar sempre ao meu lado, por me ajudar a perseverar nos estudos nos momentos mais difíceis, pelo companheirismo, inspiração e por ser minha maior incentivadora.
+
+Aos meus colegas de trabalho do Instituto Federal Catarinense e a esta instituição que, junto com a UFPE e demais instituições, possibilitou a oportunidade deste mestrado à vários servidores de todo o país.
+
+Aos companheiros de mestrado que permitiram um aprendizado de vida além da sala de aula. E, especialmente, aos amigos do flat CDU por compartilhar as angústias, alegrias e pela grande amizade construída.
+
+Aos professores do Centro de Informática da UFPE pelos seus ensinamentos, especialmente o professor Vinicius Garcia na orientação desta pesquisa, e aos funcionários do CIn que contribuíram para que este curso fosse realizado.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\includepdf[pages=-]{pre-textuais/epigrafe.pdf}
+
+%\begin{epigrafe}
+%    \vspace*{\fill}
+%    \hspace{\fill}
+%	\begin{flushright}
+%		\textit{``Não é a consciência dos homens que determina o seu ser; é o seu ser social que inversamente determina a sua consciência."}
+%		\\Karl Marx
+%	\end{flushright}
+%\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+%Contexto: 
+Assim como em organizações privadas, os órgãos públicos devem realizar processos de planejamento para cumprir seus objetivos. O governo brasileiro determina que as instituições federais elaborem um Plano Diretor de TI (PDTI), importante instrumento de planejamento das atividades de TI. O PDTI permite que a instituição tenha controle sobre os recursos gastos com tecnologia da informação, melhore o alinhamento estratégico e minimize os riscos relacionados aos ativos de TI.
+%Problema:
+Contudo, relatórios do Tribunal de Contas da União (TCU) apresentam índices preocupantes com relação à adoção do PDTI. Apesar de seus conhecidos benefícios e de ser obrigatório nos órgãos da administração pública federal, o PDTI não está sendo adotado por um número considerável de instituições. Além disso, pouco mais da metade dos órgãos que possuem PDTI fazem o vínculo das ações de TI com os objetivos estratégicos da instituição, ou seja, apresentam deficiências de alinhamento estratégico.
+%Objetivo:
+Esta pesquisa busca compreender de forma abrangente as dificuldades que resultam nos números insatisfatórios apresentados pelo TCU. O objetivo principal desta pesquisa consistiu em elaborar teoria fundamentada em dados que apresente uma relação de causa e consequência entre os elementos que restringem a elaboração do PDTI. Os resultados apresentam duas teorias, a primeira, com as razões da ausência do PDTI em algumas instituições e, a segunda, com as causas das dificuldades encontradas durante a elaboração do PDTI. Utilizando o mesmo método, Grounded Theory, foi possível relacionar os elementos das teorias fundamentadas com um conjunto de 5 processos e 48 melhores práticas de planejamento de TI. Desta forma, este trabalho apresenta uma forma de minimizar os problemas encontrados na elaboração do PDTI.
+
+%A partir do método Grounded Theory, pôde-se sugerir um conjunto de melhores práticas de planejamento estratégico de TI para minimizar as causas do problema levantadas durante a elaboração da teoria.
+%Método:
+%Através da Grounded Theory, um método de pesquisa qualitativa, foi possível extrair duas teorias fundamentadas nos dados coletados com membros de instituições públicas federais brasileiras. A primeira aborda as razões de instituições que não possuem PDTI e a segunda teoria aborda as causas das principais dificuldades que as instituições enfrentaram para elaborar seus PDTI.
+%A primeira aborda as razões de instituições não adotarem o PDTI e a segunda teoria aborda as causas das principais dificuldades que as instituições enfrentaram para elaborarem seus PDTI.
+
+
+ \textbf{Palavras-chave}: Planejamento de TI. Plano Diretor de TI. PDTI. Instituições Públicas Brasileiras. Melhores Práticas de Planejamento de TI. Grounded Theory.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+As with private organizations, public organs should execute planning processes to achieve their goals. The Brazilian government determines that federal institutions develop an IT Director Plan (PDTI), an important tool for planning of IT activities. The PDTI permits a better control of the resources spent with information technology in the organizations, it also improves the strategic alignment and reduces the risks about IT asset. However, government reports show worrying indicators regarding to the application of PDTI by the public organs. Despite the known benefits and the obligation of using PDTI in the public organs, many haven’t used it. Moreover, almost a half of the group that uses PDTI doesn’t connect the IT actions with the strategic goals of the organ, which means that they have a gap in their strategic alignment. This research seeks to understand the difficulties that result in unsatisfactory indicators related to the PDTI. The main goal of this research was elaborate a theory which shows a cause relation between the elements which Works like a barrier to the use of PDTI. The results present two theories, the first one, the reasons for the absence of PDTI in some institutions, and the second, the causes of difficulties encountered during the elaboration of PDTI. Using the same method, Grounded Theory, it was possible to relate the elements of grounded theories with a set of 5 processes and 48 best practices of IT planning. In this way, this work presents a way to minimize the problems found in the elaboration of the PDTI.
+
+%Starting with the grounded theory, it was possible to suggest a set of the best practise for the IT strategic planning to minimize the causes of the gaps founded. By using Grounded Theory, a qualitative research methodology, it was possible to extract two grounded theories based on data obtained from workers of Brazilian public organs. The first one is related to the reasons that makes the organizations not use the PDTI and the second theory shows the causes of the difficulty founded during the development of the PDTI.
+
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: IT Strategic Planning. Brazilian Government Agencies. Best Practices. Grounded Theory.
+ \end{otherlanguage*}
+\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+\item AC: Notas de Codificação Axial
+\item APF: Administração Pública Federal
+\item EGD: Estratégia de Governança Digital
+\item EGTI: Estratégia Geral de Tecnologia da Informação
+\item GT: Grounded Theory
+\item IF: Institutos Federai
+\item MA: Notas de Microanálise
+\item MMPE: Modelo de Maturidade para Planejamento Estratégico de SI/TI
+\item MP: Melhores Práticas
+\item OC: Notas de Codificação Aberta
+\item PDTI: Plano Diretor de Tecnologia da Informação
+\item PEI: Planejamento Estratégico Institucional
+\item PETI: Planejamento Estratégico de Tecnologia da Informação
+\item SI: Sistemas de Informação
+\item SISP: Sistema de Administração dos Recursos de TI
+\item SLTI: Secretaria de Logística e Tecnologia da Informação
+\item TCU: Tribunal de Contas da União
+\item TI: Tecnologia da Informação
+\item TIC: Tecnologia da Informação e Comunicação
+\item UF: Universidades Federai
+
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+%\begin{simbolos}
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+% É aconselhável criar cada capítulo em um arquivo à parte, digamos
+% "capitulo1.tex", "capitulo2.tex", ... "capituloN.tex" e depois
+% incluí-los com:
+%
+\include{capitulo1}
+\include{capitulo2}
+\include{capitulo3}
+%\include{capitulo4} %virou seção do cap de considerações finais (novo cap6)
+\include{capitulo5}
+\include{capitulo6}
+\include{capitulo7}
+% \include{capituloN}
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+%\bibliography{abntex2-dissertacao}
+\bibliography{biblio}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+\include{apendiceA} %Questionário de Coleta de Dados
+% ---
+\include{apendiceB} %Questionário e Resuldados de Avaliação
+% ---
+\include{apendiceC} %Relatório quantitativo
+% ---
+%\begin{landscape}
+\include{apendiceD} %Respostas dissertativas
+% ---
+%\end{landscape}
+\include{apendiceE} %Códigos extraídos das respostas
+% ---
+\include{apendiceF} %Notas MA
+% ---
+%\include{apendiceG} abortei o apêndice G pois as categorias já estão listadadas no apêndice E.
+% ---
+\include{apendiceH} %que na verdade é o novo apêndice G: lista as notas OC e seus respectivos conteúdos
+% ---
+\include{apendiceI} %que na verdade é o novo apêndice H: lista as notas AC e seus respectivos conteúdos
+% ---
+\include{apendiceJ}
+
+\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+%\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+%\partanexos
+
+% ---
+%\chapter{exempli} %Anexo H (lista as notas OC e seus respectivos conteúdos)
+
+
+%\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+
+\end{document}
